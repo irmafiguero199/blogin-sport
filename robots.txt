@@ -25,4 +25,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://livesportstream.net/sitemap.xml
+Sitemap: https://livesportsontv.online/sitemap.xml
