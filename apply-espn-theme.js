@@ -1,35 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>About LiveSportStream | LiveSportStream</title>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://livesportstream.net/about.html"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-<style>
-:root{--bg:#0a0a0f;--bg2:#111118;--border:rgba(255,255,255,.08);--green:#00e676;--white:#fff;--muted:rgba(255,255,255,.55);--font-head:'Bebas Neue',cursive;--font-body:'Inter',sans-serif;--r:12px;--r2:20px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.75}
-a{color:var(--green);text-decoration:none}
-.container{max-width:800px;margin:0 auto;padding:0 20px}
-#nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:13px 0;background:rgba(10,10,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--font-head);font-size:22px;display:flex;align-items:center;gap:7px}
-.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:p 1.5s infinite}
-@keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
-.nav-logo span{color:var(--green)}
-.content{padding:90px 0 60px}
-h1{font-family:var(--font-head);font-size:clamp(36px,5vw,56px);letter-spacing:.02em;text-transform:uppercase;margin-bottom:8px}
-h1 span{color:var(--green)}
-h2{font-family:var(--font-head);font-size:24px;letter-spacing:.02em;text-transform:uppercase;margin:32px 0 10px;color:var(--green)}
-p{color:rgba(255,255,255,.72);margin-bottom:16px}
-ul{margin:10px 0 16px;padding-left:20px}
-li{color:rgba(255,255,255,.65);margin-bottom:8px}
-.footer{border-top:1px solid var(--border);padding:22px 0;font-size:12px;color:var(--muted);text-align:center;margin-top:48px}
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+const fs = require('fs');
+const path = require('path');
+
+const dir = __dirname;
+const files = fs.readdirSync(dir).filter(f => f.endsWith('.html') && f !== 'index.html');
+
+// ── ESPN CSS override injected in <head> ──────────────────────────────────────
+const ESPN_CSS = `<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
 <style id="espn-theme">
 /* ESPN Theme Override */
 :root{--red:#cc0000;--red2:#a50000}
@@ -76,11 +52,10 @@ li{color:rgba(255,255,255,.65);margin-bottom:8px}
 .footer-espn-bottom a{color:#555;text-decoration:none;transition:.15s}
 .footer-espn-bottom a:hover{color:#cc0000}
 @media(max-width:700px){.footer-espn-grid{grid-template-columns:1fr 1fr}}
-body{padding-top:0!important}
-</style>
-</head>
-<body>
+</style>`;
 
+// ── Scores bar HTML ───────────────────────────────────────────────────────────
+const SCORES_BAR = `
 <!-- SCORES BAR -->
 <div id="scores-bar">
   <div style="max-width:1200px;margin:0 auto;padding:0 16px">
@@ -99,8 +74,10 @@ body{padding-top:0!important}
       <div class="score-item"><span class="score-league">UCL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Real Madrid</span><span class="score-team-score">3</span></div><div class="score-team"><span class="score-team-name">Man City</span><span class="score-team-score">1</span></div></div><span class="score-status">FINAL</span></div>
     </div>
   </div>
-</div>
-<nav id="nav">
+</div>`;
+
+// ── ESPN Nav HTML ─────────────────────────────────────────────────────────────
+const ESPN_NAV = `<nav id="nav">
 <div class="nav-wrap">
   <div class="nav-top">
     <a href="/index.html" class="nav-logo-espn"><span class="esp">LIVE</span><span class="n">SPORT</span></a>
@@ -119,31 +96,61 @@ body{padding-top:0!important}
     <button class="hamburger-espn" aria-label="Menu" onclick="toggleESPNMenu()"><span></span><span></span><span></span></button>
   </div>
 </div>
-</nav>
-<div class="content"><div class="container">
-<h1>About LiveSportStream</h1>
+</nav>`;
 
-<p>LiveSportStream.net is the most comprehensive sports streaming guide on the internet — updated monthly with the latest information on how to watch every major sport online.</p>
-<h2>Our Mission</h2>
-<p>We believe every sports fan deserves access to the games they love without paying cable prices. Our guides help readers find the best free and affordable streaming options for NHL, NFL, NBA, Premier League, UFC, FIFA World Cup, Formula 1, and 50+ other sports.</p>
-<h2>What We Cover</h2>
-<ul>
-  <li>Free sports streaming sites that actually work</li>
-  <li>Official broadcaster streaming apps</li>
-  <li>IPTV services for complete sports coverage</li>
-  <li>How to watch specific leagues and events</li>
-  <li>Device setup guides (Firestick, Smart TV, phone)</li>
-</ul>
-<h2>Our Top Recommendation</h2>
-<p>After testing dozens of services, we consistently recommend <a href="https://amslerfamilyfondation.org" target="_blank">NorthStream IPTV</a> as the best value sports streaming service — 25,000+ channels including all major Canadian sports networks (TSN 1-5, Sportsnet, RDS) in 4K for $12.99 CAD/month.</p>
-<h2>Contact</h2>
-<p>Questions? Reach us via <a href="https://wa.me/212776056268" target="_blank">WhatsApp</a>.</p>
+// ── ESPN Footer HTML ──────────────────────────────────────────────────────────
+const ESPN_FOOTER = `<footer id="footer-espn">
+  <div class="footer-espn-grid">
+    <div>
+      <div class="footer-espn-logo"><span class="esp">LIVE</span><span style="color:#fff">SPORT</span></div>
+      <p class="footer-espn-about">The most complete sports streaming guide online. Free and paid options for NHL, NFL, NBA, Premier League, UFC, and 50+ sports — tested and updated monthly.</p>
+      <div class="footer-espn-disclaimer">Disclaimer: LiveSportStream provides guides about streaming services. We do not host any streams. Always verify the legality of streaming services in your country.</div>
+    </div>
+    <div>
+      <div class="footer-espn-col-title">By Sport</div>
+      <div class="footer-espn-links">
+        <a href="/how-to-watch-nhl-online.html">NHL Streaming</a>
+        <a href="/how-to-watch-nfl-online.html">NFL Streaming</a>
+        <a href="/how-to-watch-premier-league.html">Premier League</a>
+        <a href="/how-to-watch-ufc-online.html">UFC Streaming</a>
+        <a href="/how-to-watch-nba-online.html">NBA Streaming</a>
+        <a href="/how-to-watch-champions-league.html">Champions League</a>
+        <a href="/how-to-watch-f1-online.html">F1 Streaming</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-espn-col-title">Top Guides</div>
+      <div class="footer-espn-links">
+        <a href="/best-free-sports-streaming-sites.html">Free Streaming Sites</a>
+        <a href="/crackstreams-alternatives.html">CrackStreams Alt.</a>
+        <a href="/reddit-nhl-streams-alternatives.html">Reddit Streams Alt.</a>
+        <a href="/best-iptv-for-sports.html">Best IPTV Sports</a>
+        <a href="/how-to-watch-world-cup-2026.html">World Cup 2026</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-espn-col-title">Best IPTV</div>
+      <div class="footer-espn-links">
+        <a href="https://amslerfamilyfondation.org/index.html" target="_blank">NorthStream IPTV</a>
+        <a href="https://amslerfamilyfondation.org/free-trial.html" target="_blank">Free 24h Trial</a>
+        <a href="https://amslerfamilyfondation.org/best-iptv-canada.html" target="_blank">Best IPTV Canada</a>
+        <a href="https://amslerfamilyfondation.org/iptv-firestick-canada.html" target="_blank">IPTV Firestick</a>
+        <a href="https://wa.me/212776056268?text=Hi!%20I%20want%20a%20free%20IPTV%20trial" target="_blank">WhatsApp Support</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-espn-bottom">
+    <span>© 2026 LiveSportStream — All sports streaming guides</span>
+    <div style="display:flex;gap:14px">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/about.html">About</a>
+    </div>
+  </div>
+</footer>`;
 
-</div></div>
-<footer class="footer"><div class="container">
-  <p>© 2026 <a href="/index.html">LiveSportStream.net</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
-</div></footer>
-
+// ── Mobile menu script ────────────────────────────────────────────────────────
+const MENU_SCRIPT = `
 <script id="espn-menu-script">
 function toggleESPNMenu(){
   const tabs=document.querySelector('.nav-tabs-espn');
@@ -152,5 +159,67 @@ function toggleESPNMenu(){
   if(open){tabs.classList.remove('mob-open');tabs.style.cssText='';}
   else{tabs.classList.add('mob-open');tabs.style.cssText='display:flex;flex-direction:column;position:fixed;top:55px;left:0;right:0;background:#0d0d0d;border-bottom:2px solid #cc0000;padding:12px 16px;gap:2px;z-index:999;';}
 }
-</script>
-</body></html>
+</script>`;
+
+let updated = 0;
+let skipped = 0;
+
+for (const file of files) {
+  const filePath = path.join(dir, file);
+  let html = fs.readFileSync(filePath, 'utf8');
+
+  // Skip if already processed
+  if (html.includes('espn-theme')) {
+    skipped++;
+    continue;
+  }
+
+  // 1. Inject ESPN CSS before </head>
+  html = html.replace('</head>', ESPN_CSS + '\n</head>');
+
+  // 2. Insert scores bar + replace old nav
+  // Find the nav opening tag
+  const navStart = html.indexOf('<nav id="nav"');
+  if (navStart !== -1) {
+    // Find closing </nav>
+    const navEnd = html.indexOf('</nav>', navStart) + '</nav>'.length;
+    html = html.slice(0, navStart) + SCORES_BAR + '\n' + ESPN_NAV + html.slice(navEnd);
+  } else {
+    // No nav found — inject after <body>
+    html = html.replace('<body>', '<body>\n' + SCORES_BAR + '\n' + ESPN_NAV);
+  }
+
+  // 3. Replace old footer variants
+  // Case A: footer-mini
+  const footerMiniStart = html.indexOf('<footer class="footer-mini"');
+  if (footerMiniStart !== -1) {
+    const footerMiniEnd = html.indexOf('</footer>', footerMiniStart) + '</footer>'.length;
+    html = html.slice(0, footerMiniStart) + ESPN_FOOTER + html.slice(footerMiniEnd);
+  }
+
+  // Case B: footer id="footer" (old green footer)
+  const footerIdStart = html.indexOf('<footer id="footer"');
+  if (footerIdStart !== -1) {
+    const footerIdEnd = html.indexOf('</footer>', footerIdStart) + '</footer>'.length;
+    html = html.slice(0, footerIdStart) + ESPN_FOOTER + html.slice(footerIdEnd);
+  }
+
+  // 4. Inject menu script before </body>
+  if (!html.includes('espn-menu-script')) {
+    html = html.replace('</body>', MENU_SCRIPT + '\n</body>');
+  }
+
+  // 5. Fix padding/margin-top on breadcrumb or main (nav is now sticky, not fixed)
+  // Old pages had padding-top:76px or 80px for fixed nav — reduce since nav is sticky now
+  // We'll add a small top offset via CSS override
+  html = html.replace(
+    '</style>\n</head>',
+    'body{padding-top:0!important}\n</style>\n</head>'
+  );
+
+  fs.writeFileSync(filePath, html, 'utf8');
+  updated++;
+  console.log(`✓ ${file}`);
+}
+
+console.log(`\nDone: ${updated} updated, ${skipped} already done`);

@@ -112,12 +112,97 @@ article li::before{content:'▸';position:absolute;left:0;color:var(--green)}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.iptv-cta{grid-template-columns:1fr}.card-grid{grid-template-columns:1fr}}
 @media(max-width:640px){h1{font-size:40px}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+<style id="espn-theme">
+/* ESPN Theme Override */
+:root{--red:#cc0000;--red2:#a50000}
+/* Scores bar */
+#scores-bar{background:#0d0d0d;border-bottom:2px solid #cc0000;overflow:hidden}
+.scores-inner{display:flex;white-space:nowrap;animation:scoreScroll 40s linear infinite;padding:8px 0}
+.scores-inner:hover{animation-play-state:paused}
+@keyframes scoreScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.score-item{display:inline-flex;align-items:center;gap:10px;padding:0 28px;font-size:12px;border-right:1px solid #2e2e2e;flex-shrink:0}
+.score-league{font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:.08em;color:#cc0000;text-transform:uppercase;min-width:32px}
+.score-teams{display:flex;flex-direction:column;gap:1px}
+.score-team{display:flex;justify-content:space-between;gap:16px;font-size:11px}
+.score-team-name{color:#aaa;font-weight:500}
+.score-team-score{font-weight:700;color:#fff}
+.score-status{font-size:10px;color:#cc0000;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+/* ESPN Nav */
+#nav{background:#0d0d0d!important;border-bottom:3px solid #cc0000!important;backdrop-filter:none!important;padding:0!important;position:sticky!important;top:0!important}
+.nav-wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.nav-top{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+.nav-logo-espn{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;letter-spacing:.04em;line-height:1;text-decoration:none}
+.nav-logo-espn .esp{color:#cc0000}
+.nav-logo-espn .n{color:#fff}
+.nav-tabs-espn{display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;padding-bottom:0}
+.nav-tabs-espn::-webkit-scrollbar{display:none}
+.nav-tab-espn{font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#aaa;padding:10px 14px;border-bottom:3px solid transparent;margin-bottom:-3px;transition:.15s;white-space:nowrap;text-decoration:none;display:inline-block}
+.nav-tab-espn:hover{color:#fff;border-bottom-color:#cc0000}
+.nav-cta-espn{background:#cc0000;color:#fff;padding:8px 18px;font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.04em;transition:.2s;white-space:nowrap;text-decoration:none;border-radius:3px}
+.nav-cta-espn:hover{background:#a50000}
+.hamburger-espn{display:none;flex-direction:column;gap:5px;padding:4px;cursor:pointer;background:none;border:none}
+.hamburger-espn span{width:22px;height:2px;background:#fff;border-radius:2px}
+@media(max-width:700px){.nav-tabs-espn{display:none}.hamburger-espn{display:flex}}
+/* ESPN Footer */
+#footer-espn{background:#0d0d0d;border-top:3px solid #cc0000;padding:40px 0 20px}
+.footer-espn-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 16px}
+.footer-espn-logo{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;margin-bottom:10px}
+.footer-espn-logo .esp{color:#cc0000}
+.footer-espn-about{font-size:13px;color:#aaa;line-height:1.7;max-width:280px;margin-bottom:12px}
+.footer-espn-disclaimer{font-size:11px;color:#555;line-height:1.6;background:rgba(255,255,255,.03);border:1px solid #2e2e2e;padding:10px 12px}
+.footer-espn-col-title{font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:12px;border-bottom:1px solid #2e2e2e;padding-bottom:8px}
+.footer-espn-links{display:flex;flex-direction:column;gap:7px}
+.footer-espn-links a{font-size:13px;color:#aaa;transition:.15s;text-decoration:none}
+.footer-espn-links a:hover{color:#cc0000}
+.footer-espn-bottom{display:flex;justify-content:space-between;align-items:center;padding:20px 16px 0;border-top:1px solid #2e2e2e;font-size:12px;color:#555;flex-wrap:wrap;gap:10px;max-width:1200px;margin:0 auto}
+.footer-espn-bottom a{color:#555;text-decoration:none;transition:.15s}
+.footer-espn-bottom a:hover{color:#cc0000}
+@media(max-width:700px){.footer-espn-grid{grid-template-columns:1fr 1fr}}
+body{padding-top:0!important}
+</style>
 </head>
 <body>
-<nav id="nav"><div class="container"><div class="nav-inner">
-  <a href="/index.html" class="nav-logo"><div class="logo-dot"></div>Live<span>Sport</span>Stream</a>
-  <a href="/best-iptv-for-sports.html" class="nav-cta">⭐ Best IPTV 2026</a>
-</div></div></nav>
+
+<!-- SCORES BAR -->
+<div id="scores-bar">
+  <div style="max-width:1200px;margin:0 auto;padding:0 16px">
+    <div class="scores-inner">
+      <div class="score-item"><span class="score-league">NHL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Maple Leafs</span><span class="score-team-score">4</span></div><div class="score-team"><span class="score-team-name">Bruins</span><span class="score-team-score">2</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">NBA</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Raptors</span><span class="score-team-score">108</span></div><div class="score-team"><span class="score-team-name">Celtics</span><span class="score-team-score">115</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">PL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Arsenal</span><span class="score-team-score">2</span></div><div class="score-team"><span class="score-team-name">Chelsea</span><span class="score-team-score">1</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">NFL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Chiefs</span><span class="score-team-score">27</span></div><div class="score-team"><span class="score-team-name">Bills</span><span class="score-team-score">24</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">UCL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Real Madrid</span><span class="score-team-score">3</span></div><div class="score-team"><span class="score-team-name">Man City</span><span class="score-team-score">1</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">UFC</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Poirier</span><span class="score-team-score">W</span></div><div class="score-team"><span class="score-team-name">Holloway</span><span class="score-team-score">L</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">F1</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Verstappen</span><span class="score-team-score">P1</span></div><div class="score-team"><span class="score-team-name">Hamilton</span><span class="score-team-score">P2</span></div></div><span class="score-status">RACE</span></div>
+      <div class="score-item"><span class="score-league">NHL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Maple Leafs</span><span class="score-team-score">4</span></div><div class="score-team"><span class="score-team-name">Bruins</span><span class="score-team-score">2</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">NBA</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Raptors</span><span class="score-team-score">108</span></div><div class="score-team"><span class="score-team-name">Celtics</span><span class="score-team-score">115</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">PL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Arsenal</span><span class="score-team-score">2</span></div><div class="score-team"><span class="score-team-name">Chelsea</span><span class="score-team-score">1</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">NFL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Chiefs</span><span class="score-team-score">27</span></div><div class="score-team"><span class="score-team-name">Bills</span><span class="score-team-score">24</span></div></div><span class="score-status">FINAL</span></div>
+      <div class="score-item"><span class="score-league">UCL</span><div class="score-teams"><div class="score-team"><span class="score-team-name">Real Madrid</span><span class="score-team-score">3</span></div><div class="score-team"><span class="score-team-name">Man City</span><span class="score-team-score">1</span></div></div><span class="score-status">FINAL</span></div>
+    </div>
+  </div>
+</div>
+<nav id="nav">
+<div class="nav-wrap">
+  <div class="nav-top">
+    <a href="/index.html" class="nav-logo-espn"><span class="esp">LIVE</span><span class="n">SPORT</span></a>
+    <div class="nav-tabs-espn">
+      <a href="/how-to-watch-nfl-online.html" class="nav-tab-espn">NFL</a>
+      <a href="/how-to-watch-nba-online.html" class="nav-tab-espn">NBA</a>
+      <a href="/how-to-watch-nhl-online.html" class="nav-tab-espn">NHL</a>
+      <a href="/how-to-watch-premier-league.html" class="nav-tab-espn">Soccer</a>
+      <a href="/how-to-watch-ufc-online.html" class="nav-tab-espn">UFC/MMA</a>
+      <a href="/how-to-watch-champions-league.html" class="nav-tab-espn">Champions</a>
+      <a href="/how-to-watch-f1-online.html" class="nav-tab-espn">F1</a>
+      <a href="/best-free-sports-streaming-sites.html" class="nav-tab-espn">Streaming</a>
+      <a href="/blog.html" class="nav-tab-espn">All Guides</a>
+    </div>
+    <a href="/best-iptv-for-sports.html" class="nav-cta-espn">Best IPTV 2026</a>
+    <button class="hamburger-espn" aria-label="Menu" onclick="toggleESPNMenu()"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
 
 <a href="https://wa.me/212776056268?text=Hi!%20I%20want%20to%20know%20more%20about%20IPTV%20in%20Canada." style="position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;align-items:center;gap:9px;background:#25D366;color:#fff;border-radius:50px;padding:13px 18px;box-shadow:0 6px 28px rgba(37,211,102,.45);font-weight:700;font-size:13px;text-decoration:none" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -290,5 +375,15 @@ class="faq-list">
 <script>
 function tFaq(el){const i=el.parentElement,a=i.querySelector('.faq-a'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open');x.querySelector('.faq-a').style.maxHeight='0'});if(!o){i.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}}
 document.querySelectorAll('.faq-item.open').forEach(i=>{const a=i.querySelector('.faq-a');if(a)a.style.maxHeight=a.scrollHeight+'px'});
+</script>
+
+<script id="espn-menu-script">
+function toggleESPNMenu(){
+  const tabs=document.querySelector('.nav-tabs-espn');
+  if(!tabs)return;
+  const open=tabs.classList.contains('mob-open');
+  if(open){tabs.classList.remove('mob-open');tabs.style.cssText='';}
+  else{tabs.classList.add('mob-open');tabs.style.cssText='display:flex;flex-direction:column;position:fixed;top:55px;left:0;right:0;background:#0d0d0d;border-bottom:2px solid #cc0000;padding:12px 16px;gap:2px;z-index:999;';}
+}
 </script>
 </body></html>
